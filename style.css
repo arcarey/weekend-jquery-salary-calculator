@@ -8,3 +8,6 @@ header{
 
 /* style table */
 
+.over-budget {
+    background-color: red;
+}
