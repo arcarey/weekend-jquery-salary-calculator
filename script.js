@@ -1,16 +1,7 @@
 $(document).ready(onReady);
 
 // state: setup empty array (employees)
-let employees = [
-    {
-        firstName: 'Andrew',
-        lastName: 'Carey',
-        iD: '01',
-        title: 'Software Engineer',
-        annualSalary: '60000'
-
-    }
-];
+let employees = [];
 // setup empty montly budget calc
 let yearlyBudget = 0; 
     // if this is over 20k, monthly budget background turns red
@@ -25,7 +16,7 @@ function onReady() {
     $('.emp-table').on('click', '.delete-button', onDeleteEmp)
     // remove this:
     render();
-}
+}// end onReady()
 
 
 
@@ -62,8 +53,6 @@ function onDeleteEmp() {
     let newEmployees = [];
 
     for (const emp of employees) {
-        console.log($(this).parent().siblings('.empId').text());
-        console.log(emp.iD);
         if (emp.iD !== $(this).parent().siblings('.empId').text()) {
             newEmployees.push(emp);
         }
@@ -96,8 +85,9 @@ function render() {
                     <button class="delete-button">Delete</button>
                 </th>
             </tr>
-        `);
-    }
+        `)
+    }//end for loop
+
     //render total monthly
     //empty yearlyBudget
     yearlyBudget = 0;
@@ -105,8 +95,13 @@ function render() {
         yearlyBudget += +emp.annualSalary;
     }
     //make sure it's formatted to to 2 dec
-    let totaMonthly = parseFloat(yearlyBudget / 12).toFixed(2);
-    $('#total-monthly').text(`Total Monthly: $${totaMonthly}`)
+    let totalMonthly = parseFloat(yearlyBudget / 12).toFixed(2);
+    $('#total-monthly').text(`Total Monthly: $${totalMonthly}`)
+    if (totalMonthly > 20000) {
+        $('#total-monthly').addClass('turn-red');
+    } else {
+        $('#total-monthly').removeClass('turn-red');
+    }
 }//end render()
 
 

@@ -8,6 +8,15 @@ header{
 
 /* style table */
 
-.over-budget {
+.turn-red {
     background-color: red;
+}
+
+table {
+    border: solid 1px;
+}
+
+th {
+    border: solid 1px;
+    padding: 3px;
 }
