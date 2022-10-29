@@ -1,9 +1,18 @@
 $(document).ready(onReady);
 
 // state: setup empty array (employees)
-let employees = [];
+let employees = [
+    {
+        firstName: 'Andrew',
+        lastName: 'Carey',
+        iD: '01',
+        title: 'Software Engineer',
+        annualSalary: '60000'
+
+    }
+];
 // setup empty montly budget calc
-let monthlyBudget = 0;
+let yearlyBudget = 0; 
     // if this is over 20k, monthly budget background turns red
 
 
@@ -13,7 +22,9 @@ function onReady() {
     // submit button 
     $(".submit-button").on('click', onSubmit)
     // delete buttons for each emp
-
+    $('.emp-table').on('click', '.delete-button', onDeleteEmp)
+    // remove this:
+    render();
 }
 
 
@@ -25,7 +36,6 @@ function onSubmit() {
     // log those text boxes into an object, then push into the employees array
     // check if the id input is already in use
         // if (for (const emp of employees) {
-           console.log('in submit'); 
         // }) 
         let newEmp = {
             firstName: $("#emp-first-name").val(),
@@ -40,26 +50,66 @@ function onSubmit() {
     $('.input-form').val("");
 
     //render
-    // render();
+    render();
     }//end conditional
 }// end function
 
 
 
 // delete button function
-    // removes the employee from the array (use a reference class number that is also stored in the object)
+function onDeleteEmp() {
+    // initiate new array to store non-deleted objects
+    let newEmployees = [];
+
+    for (const emp of employees) {
+        console.log($(this).parent().siblings('.empId').text());
+        console.log(emp.iD);
+        if (emp.iD !== $(this).parent().siblings('.empId').text()) {
+            newEmployees.push(emp);
+        }
+    }// end for loop
+    employees = newEmployees;
+    render();
+}// end function
+    // removes the employee from the array (use the unique id number stored in the object)
     // maybe a strech goal would be to put a removed employee into a formerEmp array
     // render new array to DOM
 
 
 
+
 // render to DOM
+function render() {
     //empty old list from DOM
+    $('.emp-table').empty();
     //render emp table
+    for (const emp of employees) {
+        //replace placeholders with string literals
+        $('.emp-table').append(`
+            <tr>
+                <th>${emp.firstName}</th> 
+                <th>${emp.lastName}</th>
+                <th class = 'empId' >${emp.iD}</th>
+                <th>${emp.title}</th>
+                <th>$${emp.annualSalary}</th>
+                <th>
+                    <button class="delete-button">Delete</button>
+                </th>
+            </tr>
+        `);
+    }
     //render total monthly
-    
+    //empty yearlyBudget
+    yearlyBudget = 0;
+    for (const emp of employees) {
+        yearlyBudget += +emp.annualSalary;
+    }
+    //make sure it's formatted to to 2 dec
+    let totaMonthly = parseFloat(yearlyBudget / 12).toFixed(2);
+    $('#total-monthly').text(`Total Monthly: $${totaMonthly}`)
+}//end render()
 
 
-    // punch list:
-    // make sure there isn't already an ID when adding an emp object
+// punch list:
+// make sure there isn't already an ID when adding an emp object
     
