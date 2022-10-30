@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="jquery.js"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>Salary Calculator</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="view-port">
-        <header>Salary Calculator</header>
-        <div class="input-form-container">
-            <h2>Add Employee</h2>
-            <input class="input-form" type="text" id="emp-first-name" placeholder="First Name">
-            <input class="input-form" type="text" id="emp-last-name" placeholder="Last Name">
-            <input class="input-form" type="text" id="emp-id" placeholder="ID">
-            <input class="input-form" type="text" id="emp-title" placeholder="Title">
-            <input class="input-form" type="text" id="emp-annual-salary" placeholder="Annual Salary">
-            <div id="error-box"></div>
-            <button class="submit-button" type="submit">Submit</button>
-        </div>
-        <div class="output-table-container">
-            <h1>Employees</h1>
-            <table class="emp-table">
-                <tr>
-                    <th class="table-field">First Name</th>
-                    <th class="table-field">Last Name</th>
-                    <th class="table-field">ID</th>
-                    <th class="table-field">Title</th>
-                    <th class="table-field">Annual Salary</th>
-                    <th class="table-field"></th>
-                </tr>
-            </table>
-        </div>
-        <div id="total-monthly">Total Monthly: $0</div>
+      <header>Salary Calculator</header>
+      <div class="input-form-container">
+        <h2>Add Employee</h2>
+        <input
+          class="input-form"
+          type="text"
+          id="emp-first-name"
+          placeholder="First Name"
+        />
+        <input
+          class="input-form"
+          type="text"
+          id="emp-last-name"
+          placeholder="Last Name"
+        />
+        <input class="input-form" type="text" id="emp-id" placeholder="ID" />
+        <input
+          class="input-form"
+          type="text"
+          id="emp-title"
+          placeholder="Title"
+        />
+        <input
+          class="input-form"
+          type="text"
+          id="emp-annual-salary"
+          placeholder="Annual Salary"
+        />
+        <div id="error-box"></div>
+        <button class="submit-button" type="submit">Submit</button>
+      </div>
+      <div class="output-table-container">
+        <h1>Employees</h1>
+        <table class="emp-table">
+          <tr>
+            <th class="table-field">First Name</th>
+            <th class="table-field">Last Name</th>
+            <th class="table-field">ID</th>
+            <th class="table-field">Title</th>
+            <th class="table-field">Annual Salary</th>
+            <th class="table-field"></th>
+          </tr>
+        </table>
+      </div>
+      <div id="total-monthly">Total Monthly: $0</div>
     </div>
-</body>
+  </body>
 </html>
