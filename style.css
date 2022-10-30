@@ -1,22 +1,60 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #9e9e9e1c;
+}
+.view-port{
+    background-color: rgba(128, 128, 128, 0.321);
+    margin: 2em;
+    padding: 2em;
+    margin-bottom: 2em;
 }
 
 header{
-    font-size: 5em;
+    font-size: 4em;
+    text-align: center;
+    background-color: rgb(207, 163, 224);
+    padding: 15px;
 }
 
-/* style table */
+.input-form-container{
+    display: grid inline;
+    border: solid 2px;
+    margin-top: 20px;
+    padding: 15px;
+;
+}
+.input-form{
+    max-width: 200px;
+    height: 20px;
+}
+h2{
+    margin-top: 0px;
+}
+
+.submit-button {
+    margin-top: 10px;
+}
+
+#error-box{
+    background-color: lightcoral;
+}
 
 .turn-red {
     background-color: red;
 }
 
 table {
+    display: grid inline;
     border: solid 1px;
 }
 
 th {
+
     border: solid 1px;
     padding: 3px;
+    width: 275px;
+}
+
+#total-monthly {
+    margin-top: 20px;
 }

@@ -24,6 +24,9 @@ function onReady() {
 function onSubmit() {
     // if all the fields have text
     if ($('.input-form').val()) {
+        // if the inputted ID is not already present in the employee array
+        if (uniqueIdCheck()) {
+            $('#error-box').text("")       
     // log those text boxes into an object, then push into the employees array
     // check if the id input is already in use
         // if (for (const emp of employees) {
@@ -37,6 +40,11 @@ function onSubmit() {
 
         };
         employees.push(newEmp);
+    } else {
+        $('#error-box').text(`
+        Error: ID number already in use. Please use a unique ID number.
+        `)   
+    }// unique ID check conditional
     // clear the fields
     $('.input-form').val("");
 
@@ -64,13 +72,32 @@ function onDeleteEmp() {
     // maybe a strech goal would be to put a removed employee into a formerEmp array
     // render new array to DOM
 
+function uniqueIdCheck() {
+    for (const emp of employees) {
+        if (emp.iD == $("#emp-id").val()) {
+            return false;
+        }
+    }//end for loop
+    return true;
 
+}
 
 
 // render to DOM
 function render() {
     //empty old list from DOM
     $('.emp-table').empty();
+    // render with column lables
+    $('.emp-table').append(`
+        <tr>
+            <th class="table-field">First Name</th>
+            <th class="table-field">Last Name</th>
+            <th class="table-field">ID</th>
+            <th class="table-field">Title</th>
+            <th class="table-field">Annual Salary</th>
+            <th class="table-field"></th>
+        </tr>
+    `)
     //render emp table
     for (const emp of employees) {
         //replace placeholders with string literals
@@ -106,5 +133,16 @@ function render() {
 
 
 // punch list:
-// make sure there isn't already an ID when adding an emp object
+// style page
+    //give the view window shape and dimention 
+    //container for inputs
+        //remember the error box
+        //get the input fields some shape and text padding
+        //get the submit button on the right side
+    //container for outputs
+    //table formatting
+        //cell sizes
+        //border dividers
+
+
     
